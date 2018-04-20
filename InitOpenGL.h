@@ -12,11 +12,12 @@
 #include <cmath>
 #include <fstream>
 #include <string>
-
+#include <glm/gtc/matrix_transform.hpp> //for matrices...
+#include <glm/gtc/type_ptr.hpp>
 
 //Defines…
 #define GLFW_DLL
-#define APP_NAME "<<Getting Started!>>"
+#define APP_NAME "<<POOP!>>"
 #define EXIT_WITH_ERROR -1
 #define EXIT_WITH_SUCCESS 0
 #define OPEN_GL_VERSION 3  //Specifies OpenGL 3.3
@@ -30,13 +31,9 @@ extern GLFWwindow* window;
 extern GLint shaderStatus;
 extern bool activeRef;
 
-
 //function decl...
 int InitWindow();
 GLuint LoadShaders(const char *vertex_file_path, const char *fragment_file_path);
 int InitGlewFailed();
 GLuint& LoadQuad();
 GLuint& LoadTriangle();
-void RenderVertex(GLuint vertexBuffer);
-void RenderQuad(GLuint vertexBuffer);
-void RenderTriangle(GLuint vertexBuffer);

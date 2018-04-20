@@ -165,30 +165,3 @@ GLuint& LoadTriangle() {
 	return vertexBuffer;
 }
 
-void RenderVertex(GLuint vertexBuffer) {
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-
-	glVertexAttribPointer(
-		0,			//attribute layout
-		3,			//Elements in array
-		GL_FLOAT,	//Each element is of type float
-		GL_FALSE,	//Normalized?
-		0,			//Stride...
-		(void*)0	//Array buffer offset...
-	);
-}
-
-void RenderQuad(GLuint vertexBuffer) {
-	RenderVertex(vertexBuffer);
-
-	glDrawArrays(GL_TRIANGLES, 0, 6);
-	glDisableVertexAttribArray(0);
-}
-
-void RenderTriangle(GLuint vertexBuffer) {
-	RenderVertex(vertexBuffer);
-
-	glDrawArrays(GL_TRIANGLES, 0, 3);
-	glDisableVertexAttribArray(0);
-}
