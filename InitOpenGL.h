@@ -22,8 +22,8 @@
 #define EXIT_WITH_SUCCESS 0
 #define OPEN_GL_VERSION 3  //Specifies OpenGL 3.3
 #define ANTIALIASING 4  //nx antialiasing
-#define SCREEN_WIDTH 1024
-#define SCREEN_HEIGHT 768
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 800
 #define GLFW_FAIL 0 
 
 //External Globals…
@@ -37,3 +37,4 @@ GLuint LoadShaders(const char *vertex_file_path, const char *fragment_file_path)
 int InitGlewFailed();
 GLuint& LoadQuad();
 GLuint& LoadTriangle();
+GLuint& LoadCube();

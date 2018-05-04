@@ -3,6 +3,9 @@
 layout(location = 0)
 in vec3 vert_pos;
 
+//out vec3 normal;
+in vec3 normal;
+
 uniform mat4 model;
 
 void main(){

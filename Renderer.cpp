@@ -1,32 +1,46 @@
 #include "Renderer.h"
 
 namespace {
+
 	int leftKeyPressed = 0;
 
 	double lastTime = glfwGetTime();
 	float deltaTime = 0.0;
 
-	auto quadPos = glm::vec3(0, 0, 0);
+	float angle = 0.0f;
 
-	glm::mat4 TransformQuad() {
+	auto objPos = glm::vec3(0, 0, 0);
 
+	glm::mat4 TransformObject() {
 		//handle keyboard input
 		if (glfwGetKey(window, GLFW_KEY_RIGHT)) {
-			quadPos.x += deltaTime;
+			objPos.x += deltaTime;
 		}
 		if (glfwGetKey(window, GLFW_KEY_LEFT)) {
-			quadPos.x -= deltaTime;
+			objPos.x -= deltaTime;
 		}
 		if (glfwGetKey(window, GLFW_KEY_UP)) {
-			quadPos.y += deltaTime;
+			objPos.y += deltaTime;
 		}
 		if (glfwGetKey(window, GLFW_KEY_DOWN)) {
-			quadPos.y -= deltaTime;
+			objPos.y -= deltaTime;
+		}
+
+		if (glfwGetKey(window, GLFW_KEY_Q)) {
+			angle += deltaTime * 60.0f;
+		}
+
+		if (glfwGetKey(window, GLFW_KEY_E)) {
+			angle -= deltaTime * 60.0f;
 		}
 
 		//matrix math
-		glm::mat4 model;
-		model = glm::translate(model, quadPos);
+		glm::mat4 model;	
+
+		model = glm::rotate(model, angle, glm::vec3(1, 1, 0));
+
+		//angle += deltaTime;
+		//model = glm::translate(model, objPos);
 
 		return model;
 	}
@@ -41,13 +55,12 @@ void BeginRenderingLoop() {
 		GLuint programID = LoadShaders("BasicVertexShader.vertexshader", "BasicFragmentShader.fragmentshader");
 
 		GLuint triangleID = LoadTriangle();
-		GLuint quadID = LoadQuad();
+		GLuint cubeID = LoadCube();
 
 		do {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			//RenderTriangle(triangleID);
-			RenderQuad(quadID, TransformQuad(),programID);
+			RenderCube(cubeID, TransformObject(), programID);
 
 			glfwSwapBuffers(window);
 			glfwPollEvents();
@@ -83,6 +96,13 @@ void RenderQuad(GLuint vertexBuffer, glm::mat4 model,GLuint programID) {
 	RenderVertex(vertexBuffer, model, programID);
 
 	glDrawArrays(GL_TRIANGLES, 0, 6);
+	glDisableVertexAttribArray(0);
+}
+
+void RenderCube(GLuint vertexBuffer, glm::mat4 model, GLuint programID) {
+	RenderVertex(vertexBuffer, model, programID);
+
+	glDrawArrays(GL_TRIANGLES, 0, 36);
 	glDisableVertexAttribArray(0);
 }
 

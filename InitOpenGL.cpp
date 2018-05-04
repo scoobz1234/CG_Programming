@@ -165,3 +165,62 @@ GLuint& LoadTriangle() {
 	return vertexBuffer;
 }
 
+GLuint& LoadCube() {
+
+	static GLfloat g_vertex_buffer_data[] = {
+		//front face fixed
+		-0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f, -0.5f,
+		 0.5f,  0.5f, -0.5f,
+		-0.5f, -0.5f, -0.5f,
+		 0.5f,  0.5f, -0.5f,
+		-0.5f,  0.5f, -0.5f,
+
+		//right face fixed
+		0.5f, -0.5f, -0.5f,
+		0.5f, -0.5f,  0.5f,
+		0.5f,  0.5f,  0.5f,
+		0.5f,  0.5f,  0.5f,
+		0.5f,  0.5f, -0.5f,
+		0.5f, -0.5f, -0.5f,
+
+		// left face
+		-0.5f, -0.5f, -0.5f,
+		-0.5f,  0.5f, -0.5f,
+		-0.5f,  0.5f,  0.5f,
+		-0.5f, -0.5f,  0.5f,
+		-0.5f,  0.5f,  0.5f,
+		-0.5f, -0.5f, -0.5f,
+
+		// bottom face fixed
+		-0.5f, 0.5f, -0.5f,
+		 0.5f, 0.5f, -0.5f,
+		 0.5f, 0.5f,  0.5f,
+		 0.5f, 0.5f,  0.5f,
+		-0.5f, 0.5f,  0.5f,
+		-0.5f, 0.5f, -0.5f,
+
+		// top face  fixed.
+		-0.5f, -0.5f, -0.5f,
+		-0.5f, -0.5f, -0.5f,
+		 0.5f, -0.5f, -0.5f,
+		-0.5f, -0.5f,  0.5f,
+		 0.5f, -0.5f,  0.5f,
+		 0.5f, -0.5f, -0.5f,
+
+		//back face fixed
+		 0.5f,  0.5f, 0.5f,
+		 0.5f, -0.5f, 0.5f,
+		-0.5f, -0.5f, 0.5f,
+		-0.5f, -0.5f, 0.5f,
+		-0.5f,  0.5f, 0.5f,
+		 0.5f,  0.5f, 0.5f
+	};
+
+	GLuint vertexBuffer = 0;
+	glGenBuffers(1, &vertexBuffer);
+	glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+
+	return vertexBuffer;
+}
