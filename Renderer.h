@@ -1,5 +1,6 @@
 #pragma once
 #include "InitOpenGL.h"
+#include "OBJLoader.h"
 
 
 void BeginRenderingLoop();

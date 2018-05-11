@@ -72,12 +72,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="OBJLoader.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="InitOpenGL.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matrix.h" />
+    <ClInclude Include="OBJLoader.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="InitOpenGL.h" />
   </ItemGroup>
