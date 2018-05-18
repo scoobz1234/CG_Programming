@@ -39,9 +39,6 @@ namespace {
 
 		model = glm::rotate(model, angle, glm::vec3(1, 1, 0));
 
-		//angle += deltaTime;
-		//model = glm::translate(model, objPos);
-
 		return model;
 	}
 }
@@ -58,7 +55,6 @@ void BeginRenderingLoop() {
 		GLuint cubeID = LoadCube();
 
 		ObjLoader::OBJData data;
-
 		ObjLoader::Load("zeCube.obj",data);
 
 		do {

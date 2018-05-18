@@ -1,5 +1,7 @@
 #include <fstream>
 #include <string>
+#include <iostream>
+#include <stdio.h>
 #pragma once
 
 
@@ -13,7 +15,6 @@ namespace ObjLoader {
 	};
 
 	//TODO:: Make a function to clean up model data!
-
 	int Load(const char *fileName, OBJData &data);
 
 };
