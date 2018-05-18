@@ -9,4 +9,5 @@ void RenderVertex(GLuint vertexBuffer, glm::mat4 model, GLuint programID /*shade
 void RenderQuad(GLuint vertexBuffer, glm::mat4 model, GLuint programID);
 void RenderCube(GLuint vertexBuffer, glm::mat4 model, GLuint programID);
 void RenderTriangle(GLuint vertexBuffer, glm::mat4 model, GLuint programID);
+void RenderOBJ(ObjLoader::OBJData data, glm::mat4 model, GLuint programID);
 

@@ -127,6 +127,17 @@ int InitGlewFailed() {
 	return EXIT_WITH_SUCCESS;
 }
 
+ObjLoader::OBJData LoadObj(const char* filePath) {
+	ObjLoader::OBJData data;
+	(void)ObjLoader::Load(filePath, data);
+
+	glGenBuffers(1, &data.id);
+	glBindBuffer(GL_ARRAY_BUFFER, data.id);
+	glBufferData(GL_ARRAY_BUFFER, data.numVertices * sizeof(float) * 3,
+		data.vertices, GL_STATIC_DRAW);
+	return data;
+}
+
 GLuint& LoadQuad() {
 
 	static GLfloat g_vertex_buffer_data[] = {

@@ -14,6 +14,7 @@
 #include <string>
 #include <glm/gtc/matrix_transform.hpp> //for matrices...
 #include <glm/gtc/type_ptr.hpp>
+#include "OBJLoader.h"
 
 //Defines…
 #define GLFW_DLL
@@ -38,3 +39,4 @@ int InitGlewFailed();
 GLuint& LoadQuad();
 GLuint& LoadTriangle();
 GLuint& LoadCube();
+ObjLoader::OBJData LoadObj(const char* filePath);

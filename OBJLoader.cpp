@@ -55,7 +55,7 @@ int RecursiveLoad(const char *fileName, ObjLoader::OBJData &data) {
 					continue;
 				}
 
-				sscanf(nextLine.c_str(), "%*1c %d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d", 
+				sscanf(nextLine.c_str(), "%*1c %d/%d/%d %d/%d/%d %d/%d/%d %d/%d/%d",
 					&faces[0], &faces[1], &faces[2], &faces[3], &faces[4], &faces[5], 
 					&faces[6], &faces[7], &faces[8], &faces[9], &faces[10], &faces[11]);
 				faces += 12;

@@ -53,14 +53,13 @@ void BeginRenderingLoop() {
 
 		GLuint triangleID = LoadTriangle();
 		GLuint cubeID = LoadCube();
-
-		ObjLoader::OBJData data;
-		ObjLoader::Load("zeCube.obj",data);
+		auto cube = LoadObj("zeCube.obj");
 
 		do {
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-			RenderCube(cubeID, TransformObject(), programID);
+			//RenderCube(cubeID, TransformObject(), programID);
+			RenderOBJ(cube, TransformObject(), programID);
 
 			glfwSwapBuffers(window);
 			glfwPollEvents();
@@ -97,6 +96,14 @@ void RenderQuad(GLuint vertexBuffer, glm::mat4 model,GLuint programID) {
 
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glDisableVertexAttribArray(0);
+}
+
+void RenderOBJ(ObjLoader::OBJData data, glm::mat4 model, GLuint programID) {
+	RenderVertex(data.id, model, programID);
+
+	//glDrawArrays(GL_TRIANGLES, 0, data.numVertices);
+	glDrawElements(GL_TRIANGLES, 4, GL_UNSIGNED_INT, data.faces);
+	//glDisableVertexAttribArray(0);
 }
 
 void RenderCube(GLuint vertexBuffer, glm::mat4 model, GLuint programID) {
