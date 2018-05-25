@@ -131,10 +131,22 @@ ObjLoader::OBJData LoadObj(const char* filePath) {
 	ObjLoader::OBJData data;
 	(void)ObjLoader::Load(filePath, data);
 
-	glGenBuffers(1, &data.id);
-	glBindBuffer(GL_ARRAY_BUFFER, data.id);
-	glBufferData(GL_ARRAY_BUFFER, data.numVertices * sizeof(float) * 3,
-		data.vertices, GL_STATIC_DRAW);
+	glGenBuffers(1, &data.vertID);
+	glBindBuffer(GL_ARRAY_BUFFER, data.vertID);
+	glBufferData(GL_ARRAY_BUFFER, data.numVertices * sizeof(float) * 3, data.vertices, GL_STATIC_DRAW);
+
+	glGenBuffers(1, &data.texID);
+	glBindBuffer(GL_ARRAY_BUFFER, data.texID);
+	glBufferData(GL_ARRAY_BUFFER, data.numUVs * sizeof(float) * 2, data.uvs, GL_STATIC_DRAW);
+
+	glGenBuffers(1, &data.normID);
+	glBindBuffer(GL_ARRAY_BUFFER, data.normID);
+	glBufferData(GL_ARRAY_BUFFER, data.numNormals *sizeof(float) * 3, data.normals, GL_STATIC_DRAW);
+
+	glGenBuffers(1, &data.faceID);
+	glBindBuffer(GL_ARRAY_BUFFER, data.faceID);
+	glBufferData(GL_ARRAY_BUFFER, data.numFaces * sizeof(unsigned int) * 12, data.faces, GL_STATIC_DRAW);
+
 	return data;
 }
 

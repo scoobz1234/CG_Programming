@@ -8,7 +8,7 @@
 namespace ObjLoader {
 
 	struct OBJData {
-		unsigned int id = 0;
+		unsigned int vertID = 0, texID = 0, normID = 0, faceID = 0;
 		unsigned int *faces = nullptr;
 		float *vertices = nullptr, *normals = nullptr, *uvs = nullptr;
 		unsigned int numVertices = 0, numNormals = 0, 

@@ -72,8 +72,16 @@ int RecursiveLoad(const char *fileName, ObjLoader::OBJData &data) {
 			return RecursiveLoad(fileName, data);
 		}
 
+		vertices = (float*)malloc(data.numVertices * sizeof(float) * 3);
+		for (int i = 0; i < data.numFaces * 12; i += 3) {
+			int vertIndex = data.faces[i] - 1;
+			//vertices[vertIndex] =
+		}
+
 		return 0;
 	}
+
+
 
 
 int ObjLoader::Load(const char * fileName, OBJData &data) {
